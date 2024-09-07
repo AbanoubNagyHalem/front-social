@@ -1,0 +1,49 @@
+.navbar {
+    background-color: #242526;
+    color: #B8BBBF;
+}
+
+.navbar .container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    /* gap: 200px; */
+}
+
+a {
+    text-decoration: none;
+    color: #B8BBBF;
+    position: relative;
+}
+
+a .icon {
+    color: #B8BBBF;
+    padding: 12px;
+
+}
+
+a.active .icon {
+    color: #0866FF;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    background-color: #0866FF;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+a.active::after {
+    opacity: 1;
+}

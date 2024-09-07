@@ -1,0 +1,108 @@
+.post {
+    margin: 30px 0;
+    background-color: #242526;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.post .name-pic {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.post .name-pic img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.post .content {
+    margin: 20px 0;
+}
+
+.post .post-image {
+    width: 100%;
+    padding: 0 24px;
+}
+
+
+.post .likes-comments {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 10px 0;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.post .buttons-post {
+    border-top: 1px solid #4d4c4c;
+    border-bottom: 1px solid #4d4c4c;
+    display: flex;
+    justify-content: space-around;
+}
+
+.post button {
+    background-color: transparent;
+    padding: 10px 120px;
+    border: none;
+    color: #B8BBBF;
+    cursor: pointer;
+}
+
+.post button:hover {
+    background-color: rgb(49, 49, 49);
+    border-radius: 12px;
+}
+
+.post .comment-post {
+    margin-top: 10px;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+}
+
+.post .comment-post img {
+    width: 25px;
+    border-radius: 50%;
+}
+
+.post .comment {
+    background-color: #3A3B3C;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.post .comment .name {
+    font-size: 13px;
+}
+
+.post .comment .words {
+    margin-top: 13px;
+    font-size: 13px;
+    padding-left: 12px;
+}
+
+.post .inputs {
+    display: flex;
+    position: relative;
+}
+
+.post .inputs input#text {
+    background-color: #3A3B3C;
+    border: none;
+    margin-top: 12px;
+    border-radius: 20px;
+    width: 100%;
+    padding: 12px;
+    color: #fff;
+    padding-left: 20px;
+}
+
+.post .inputs button {
+    position: absolute;
+    right: 18px;
+    bottom: 8px;
+    padding: 0;
+}
