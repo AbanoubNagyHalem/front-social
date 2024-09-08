@@ -20,6 +20,11 @@ const Home = ({
           handleComment={handleComment}
           handleDelete={handleDelete}
         />
+        {data.map((post) => post).length === 0 && (
+          <div className="no-posts">
+            No Posts Here <br /> Please Add New Post
+          </div>
+        )}
       </div>
     </div>
   );

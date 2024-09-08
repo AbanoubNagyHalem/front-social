@@ -49,7 +49,11 @@ const AddPost = ({ handleAddPost }) => {
       </label>
       <input type="file" name="photo" id="photo" onChange={handlePhotoChange} />
       <br />
-      <button className="postbutton" onClick={handleCreatePost}>
+      <button
+        className="postbutton"
+        onClick={handleCreatePost}
+        disabled={!content ? true : false}
+      >
         Post
       </button>
     </div>

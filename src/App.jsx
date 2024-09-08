@@ -139,7 +139,17 @@ const App = () => {
             />
           }
         />
-        <Route path="/likes" element={<Likes />} />
+        <Route
+          path="/likes"
+          element={
+            <Likes
+              data={data}
+              changeLike={changeLike}
+              handleComment={handleComment}
+              handleDelete={handleDelete}
+            />
+          }
+        />
       </Routes>
     </Fragment>
   );

@@ -3,10 +3,17 @@ import { IoMdSend } from "react-icons/io";
 import "./Posts.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Posts = ({ data, changeLike, handleComment, handleDelete }) => {
   const [currentComment, setCurrentComment] = useState({});
+  const commentRefs = useRef({});
+
+  const focusComment = (postId) => {
+    if (commentRefs.current[postId]) {
+      commentRefs.current[postId].focus();
+    }
+  };
 
   const handleCommentChange = (e, postId) => {
     setCurrentComment((prev) => ({
@@ -48,7 +55,7 @@ const Posts = ({ data, changeLike, handleComment, handleDelete }) => {
               Like
             </button>
 
-            <button>
+            <button onClick={() => focusComment(one.id)}>
               <FaRegComment size={20} />
               Comment
             </button>
@@ -72,6 +79,7 @@ const Posts = ({ data, changeLike, handleComment, handleDelete }) => {
               id="text"
               value={currentComment[one.id] || ""}
               onChange={(e) => handleCommentChange(e, one.id)}
+              ref={(el) => (commentRefs.current[one.id] = el)}
             />
             <button
               onClick={() => {
