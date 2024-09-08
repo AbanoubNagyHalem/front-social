@@ -1,16 +1,32 @@
 /* eslint-disable react/prop-types */
 import { IoMdSend } from "react-icons/io";
-
 import "./Posts.css";
+import { AiOutlineLike } from "react-icons/ai";
+import { FaRegComment } from "react-icons/fa";
+import { useState } from "react";
 
-const Posts = ({ data }) => {
+const Posts = ({ data, changeLike, handleComment, handleDelete }) => {
+  const [currentComment, setCurrentComment] = useState({});
+
+  const handleCommentChange = (e, postId) => {
+    setCurrentComment((prev) => ({
+      ...prev,
+      [postId]: e.target.value,
+    }));
+  };
+
   return (
     <>
       {data.map((one) => (
         <div className="post" key={one.id}>
-          <div className="name-pic">
-            <img src={one.profilePic} alt="profile" />
-            <p>{one.name}</p>
+          <div className="heading">
+            <div className="name-pic">
+              <img src={one.profilePic} alt="profile" />
+              <p>{one.name}</p>
+            </div>
+            <button className="delete" onClick={() => handleDelete(one.id)}>
+              X
+            </button>
           </div>
           <div className="content">{one.content}</div>
 
@@ -24,8 +40,18 @@ const Posts = ({ data }) => {
           </div>
 
           <div className="buttons-post">
-            <button>Like</button>
-            <button>Comment</button>
+            <button
+              className={one.mylike ? "active" : ""}
+              onClick={() => changeLike(one.id)}
+            >
+              <AiOutlineLike size={20} color={one.mylike ? "#2D68D2" : ""} />
+              Like
+            </button>
+
+            <button>
+              <FaRegComment size={20} />
+              Comment
+            </button>
           </div>
 
           {one.comments.map((onecomment) => (
@@ -44,9 +70,16 @@ const Posts = ({ data }) => {
               placeholder={`What's on your mind, ${one.name}?`}
               name="text"
               id="text"
+              value={currentComment[one.id] || ""}
+              onChange={(e) => handleCommentChange(e, one.id)}
             />
-            <button>
-              <IoMdSend color="#81BDFF" />
+            <button
+              onClick={() => {
+                handleComment(currentComment[one.id] || "", one.id);
+                setCurrentComment((prev) => ({ ...prev, [one.id]: "" }));
+              }}
+            >
+              <IoMdSend className="send-icon" color="#81BDFF" size={20} />
             </button>
           </div>
         </div>

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Fragment, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -19,7 +18,7 @@ const App = () => {
       content: "Had a great time at the beach!",
       postImage: profile,
       likes: 120,
-      mylike: 0,
+      mylike: true,
       comments: [
         {
           id: 1,
@@ -45,7 +44,7 @@ const App = () => {
       content: "Loving the new React update!",
       postImage: null,
       likes: 200,
-      mylike: 1,
+      mylike: false,
       comments: [],
       timestamp: "2024-09-06T15:20:30",
     },
@@ -56,7 +55,7 @@ const App = () => {
       content: "Just finished a great book!",
       postImage: null,
       likes: 85,
-      mylike: 1,
+      mylike: false,
       comments: [
         {
           id: 3,
@@ -68,13 +67,78 @@ const App = () => {
       ],
       timestamp: "2024-09-05T10:15:00",
     },
+    {
+      id: 4,
+      profilePic: profile,
+      name: "Alice Johnson",
+      content: "Looking forward to the weekend!",
+      postImage: null,
+      likes: 50,
+      mylike: false,
+      comments: [],
+      timestamp: "2024-09-08T08:30:00",
+    },
   ]);
+
+  const handleAddPost = (newPost) => {
+    setData((prevData) => [newPost, ...prevData]);
+  };
+
+  const changeLike = (id) => {
+    setData((prevData) =>
+      prevData.map((post) =>
+        post.id === id
+          ? {
+              ...post,
+              mylike: !post.mylike,
+              likes: post.mylike ? post.likes - 1 : post.likes + 1,
+            }
+          : post
+      )
+    );
+  };
+
+  const handleComment = (comment, id) => {
+    const newComment = {
+      id: Math.random(),
+      profilePic: profile,
+      name: "Abanoub Nagy",
+      content: comment,
+      timestamp: new Date().toISOString(),
+    };
+
+    setData((prevData) =>
+      prevData.map((post) =>
+        post.id === id
+          ? {
+              ...post,
+              comments: [...post.comments, newComment],
+            }
+          : post
+      )
+    );
+  };
+
+  const handleDelete = (id) => {
+    setData((prevData) => prevData.filter((post) => post.id !== id));
+  };
 
   return (
     <Fragment>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home data={data} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              data={data}
+              changeLike={changeLike}
+              handleComment={handleComment}
+              handleAddPost={handleAddPost}
+              handleDelete={handleDelete}
+            />
+          }
+        />
         <Route path="/likes" element={<Likes />} />
       </Routes>
     </Fragment>

@@ -5,6 +5,16 @@
     border-radius: 10px;
 }
 
+.post .heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post .delete {
+    padding: 12px;
+    font-weight: 700;
+    font-size: 20px;
+}
 
 .post .name-pic {
     display: flex;
@@ -49,6 +59,13 @@
     border: none;
     color: #B8BBBF;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post .active {
+    color: #2D68D2;
 }
 
 .post button:hover {
@@ -86,23 +103,24 @@
 
 .post .inputs {
     display: flex;
-    position: relative;
+    align-items: center;
+    margin-top: 12px;
 }
 
 .post .inputs input#text {
     background-color: #3A3B3C;
     border: none;
-    margin-top: 12px;
     border-radius: 20px;
-    width: 100%;
     padding: 12px;
     color: #fff;
     padding-left: 20px;
+    width: 100%;
 }
 
 .post .inputs button {
-    position: absolute;
-    right: 18px;
-    bottom: 8px;
     padding: 0;
+}
+
+.post .inputs button:hover {
+    background-color: transparent;
 }
