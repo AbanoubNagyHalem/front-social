@@ -8,6 +8,9 @@ import Likes from "./components/Likes/Likes";
 import profile from "./assets/profilePic.jpg";
 
 import "./App.css";
+import Chats from "./components/Chats/Chats";
+import Market from "./components/Market/Market";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const [data, setData] = useState([
@@ -150,6 +153,9 @@ const App = () => {
             />
           }
         />
+        <Route path="chats" element={<Chats />} />
+        <Route path="market" element={<Market />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
     </Fragment>
   );

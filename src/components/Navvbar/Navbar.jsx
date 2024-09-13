@@ -30,12 +30,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/chats" className={isActive("/market")}>
+            <Link to="/market" className={isActive("/market")}>
               <FaLandmark className="icon" size={50} />
             </Link>
           </li>
           <li>
-            <Link to="/chats" className={isActive("/profile")}>
+            <Link to="/profile" className={isActive("/profile")}>
               <CgProfile className="icon" size={50} />
             </Link>
           </li>
