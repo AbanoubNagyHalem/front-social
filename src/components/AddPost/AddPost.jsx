@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import profile from "../../assets/profilePic.jpg";
+import profile from "../../assets/blank-profile-picture-973460_1280.webp";
 import "./AddPost.css";
 
 const AddPost = ({ handleAddPost }) => {
