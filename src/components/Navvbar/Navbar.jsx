@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="container">
+      <div className="containerr">
         <ul className="list">
           <li>
             <Link to="/" className={isActive("/")}>

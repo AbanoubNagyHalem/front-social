@@ -1,58 +1,41 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import profile from "../../assets/blank-profile-picture-973460_1280.webp";
+import profileImage from "../../assets/blank-profile-picture-973460_1280.webp";
 import "./AddPost.css";
 
-const AddPost = ({ handleAddPost }) => {
-  const [content, setContent] = useState("");
-  const [photo, setPhoto] = useState(null);
+const AddPost = ({ onAddPost }) => {
+  const [postContent, setPostContent] = useState("");
 
   const handleCreatePost = () => {
     const newPost = {
-      id: Math.random(),
-      profilePic: profile,
-      name: "Abanoub Nagy",
-      content: content,
-      postImage: photo,
-      likes: 0,
-      mylike: false,
-      comments: [],
-      timestamp: new Date().toISOString(),
+      content: postContent,
     };
 
-    handleAddPost(newPost);
-    setContent("");
-    setPhoto(null);
-  };
-
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    setPhoto(URL.createObjectURL(file));
+    onAddPost(newPost);
+    setPostContent(""); 
   };
 
   return (
     <div className="add-post">
-      <div className="name-pic">
-        <img src={profile} alt="profile" />
+      <div className="user-info">
+        <img src={profileImage} alt="User Profile" />
         <p>Abanoub Nagy</p>
       </div>
       <input
         type="text"
         placeholder="What's on your mind, Abanoub?"
-        name="text"
-        id="text"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
+        value={postContent}
+        onChange={(e) => setPostContent(e.target.value)}
       />
-      <label htmlFor="photo" className="custom-file-upload">
+      <label htmlFor="photo-upload" className="custom-file-upload">
         Choose a Photo
       </label>
-      <input type="file" name="photo" id="photo" onChange={handlePhotoChange} />
+      <input type="file" id="photo-upload" />
       <br />
       <button
-        className="postbutton"
+        className="post-button"
         onClick={handleCreatePost}
-        disabled={!content ? true : false}
+        disabled={!postContent}
       >
         Post
       </button>

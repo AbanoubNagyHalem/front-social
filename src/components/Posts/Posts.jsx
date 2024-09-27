@@ -22,7 +22,6 @@ const Posts = ({ data, changeLike, handleComment, handleDelete }) => {
       [postId]: e.target.value,
     }));
   };
-  console.log(data);
 
   return (
     <>
